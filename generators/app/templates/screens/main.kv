@@ -1,0 +1,29 @@
+#:include screens/partials/screen_manager.kv
+
+NavigationLayout:
+    MDNavigationDrawer:
+        drawer_logo: 'assets/logo_transparent.png'
+
+        NavigationDrawerSubheader:
+            text: "Menu:"
+
+        NavigationDrawerIconButton:
+            text: 'Screen 1'
+            on_release:
+                screen_manager.current = "screen1"
+
+        NavigationDrawerIconButton:
+            text: 'Screen 2'
+            on_release:
+                screen_manager.current = "screen2"
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "<%= title %> made using Knavels Kontinuum"
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [['menu', lambda x: root.toggle_nav_drawer()]]
+
+
+        MainScreenManager:
+            id: screen_manager
